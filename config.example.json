@@ -1,0 +1,4 @@
+{
+  "HUB_IP": "YOUR_DIRIGERA_HUB_IP",
+  "HUB_TOKEN": "YOUR_TOKEN_FROM_bridge.py_setup"
+}

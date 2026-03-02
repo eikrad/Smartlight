@@ -61,7 +61,7 @@ Run the interactive setup. You’ll need to press the **action button** on the b
 python bridge.py setup
 ```
 
-This will ask for the hub IP, complete the OAuth-style flow, and write `HUB_IP` and `HUB_TOKEN` to `config.json`.
+This will ask for the hub IP, complete the OAuth-style flow, and write `HUB_IP` and `HUB_TOKEN` to `config.json`. (If you cloned the repo, you can use `config.example.json` as a reference; the real `config.json` is gitignored.)
 
 ### 3. Run the bridge
 
@@ -98,8 +98,7 @@ pytest --cov=bridge --cov=scan
 
 ## Security note
 
-- `config.json` contains the Dirigera **HUB_TOKEN**. Keep it out of version control and only on machines that need to run the bridge.
-- The bridge uses TLS (`cert.pem` / `key.pem`). Use proper certificates if you expose the server beyond your local network.
+
 
 ## License
 
