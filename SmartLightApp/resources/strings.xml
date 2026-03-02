@@ -1,0 +1,8 @@
+<strings>
+    <string id="AppName">Smart Licht</string>
+    <string id="Loading">Laden...</string>
+    <string id="Error">Fehler</string>
+    <string id="BridgeIP">Bridge IP Adresse</string>
+    <string id="BridgePort">Bridge Port</string>
+    <string id="UseHTTPS">HTTPS verwenden</string>
+</strings>

@@ -1,0 +1,537 @@
+[ @file = "/home/eike_f/Smart_licht/SmartLightApp/source/SettingsMenuDelegate.mc"; @line = 1; @symbol_usingdef<0> = [Toybox,1,6,12]; @symbol_usingdef<1> = [WatchUi,1,13,20]; ]
+using Toybox.WatchUi;
+[ @file = "/home/eike_f/Smart_licht/SmartLightApp/source/SettingsMenuDelegate.mc"; @line = 2; @symbol_usingdef<0> = [Toybox,2,6,12]; @symbol_usingdef<1> = [System,2,13,19]; ]
+using Toybox.System;
+[ @file = "/home/eike_f/Smart_licht/SmartLightApp/source/SettingsMenuDelegate.mc"; @line = 4; @symbol_classdef = [SettingsMenuDelegate,4,6,26]; @symbol_extends<0> = [WatchUi,4,35,42]; @symbol_extends<1> = [MenuInputDelegate,4,43,60]; ]
+class SettingsMenuDelegate extends WatchUi.MenuInputDelegate {
+    [ @file = "/home/eike_f/Smart_licht/SmartLightApp/source/SettingsMenuDelegate.mc"; @line = 4; ]
+    <init> {
+    }
+    [ @file = "/home/eike_f/Smart_licht/SmartLightApp/source/SettingsMenuDelegate.mc"; @line = 4; ]
+    static
+    <init> {
+    }
+    [ @file = "/home/eike_f/Smart_licht/SmartLightApp/source/SettingsMenuDelegate.mc"; @line = 5; @position = 8; @symbol_vardef = [view,5,8,12]; ]
+    var view;
+    [ @file = "/home/eike_f/Smart_licht/SmartLightApp/source/SettingsMenuDelegate.mc"; @line = 7; @symbol_functiondef = [initialize,7,13,23]; @symbol_param<0> = [v,7,24,25]; ]
+    function initialize(v) as Void {
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_7_27_10_4_start:
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SettingsMenuDelegate.mc" 8 8 ]
+        symbol [ MenuInputDelegate %tmp.2 8 8 25 ];
+        %tmp.2 = getv ? :MenuInputDelegate;
+        symbol [ initialize %tmp.3 8 26 36 ];
+        %tmp.3 = getv function %tmp.2 :initialize;
+        invoke %tmp.2 %tmp.3();
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SettingsMenuDelegate.mc" 9 8 ]
+        %tmp.4 = lgetv %v;
+        symbol [ v %tmp.4 9 15 16 ];
+        symbol [ view ? 9 8 12 ];
+        putv self :view %tmp.4;
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_7_27_10_4_stop:
+    }
+    [ @file = "/home/eike_f/Smart_licht/SmartLightApp/source/SettingsMenuDelegate.mc"; @line = 12; @symbol_functiondef = [onMenuItem,12,13,23]; @symbol_param<0> = [item,12,24,28]; ]
+    function onMenuItem(item) {
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_12_30_46_4_start:
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SettingsMenuDelegate.mc" 13 8 ]
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_13_8_45_8_if_stmt:
+        %tmp.1 = lgetv %item;
+        symbol [ item %tmp.1 13 12 16 ];
+        %tmp.3 = const :room_color;
+        symbol [ room_color %tmp.3 13 21 31 const ];
+        %tmp.4 = eq %tmp.1 %tmp.3;
+        bf %tmp.4 @_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_13_8_45_8_if_false;
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_13_8_45_8_if_true:
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_13_33_43_8_start:
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SettingsMenuDelegate.mc" 14 12 ]
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_14_12_14_50_if_stmt:
+        symbol [ view %tmp.6 14 16 20 ];
+        %tmp.6 = getv ? :view;
+        symbol [ rooms %tmp.7 14 21 26 ];
+        %tmp.7 = getv %tmp.6 :rooms;
+        symbol [ size %tmp.8 14 27 31 ];
+        %tmp.8 = getv function %tmp.7 :size;
+        %tmp.9 = invoke %tmp.7 %tmp.8();
+        %tmp.10 = 0;
+        %tmp.11 = eq %tmp.9 %tmp.10;
+        bf %tmp.11 @_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_14_12_14_50_if_end;
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_14_12_14_50_if_true:
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_14_40_14_50_start:
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SettingsMenuDelegate.mc" 14 42 ]
+        ret ?;
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_14_40_14_50_stop:
+        goto @_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_14_12_14_50_if_end;
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_14_12_14_50_if_end:
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SettingsMenuDelegate.mc" 15 12 ]
+        [ "_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_13_33_43_8_start" "_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_13_33_43_8_stop" ]
+        %room.1 = local;
+        symbol [ room %room.1 15 16 20 ];
+        symbol [ view %tmp.13 15 23 27 ];
+        %tmp.13 = getv ? :view;
+        symbol [ rooms %tmp.14 15 28 33 ];
+        %tmp.14 = getv %tmp.13 :rooms;
+        symbol [ view %tmp.16 15 34 38 ];
+        %tmp.16 = getv ? :view;
+        symbol [ currentIndex %tmp.17 15 39 51 ];
+        %tmp.17 = getv %tmp.16 :currentIndex;
+        %tmp.18 = agetv %tmp.14 %tmp.17;
+        lputv %room.1 %tmp.18;
+        symbol [ room %room.1 15 16 20 ];
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SettingsMenuDelegate.mc" 17 12 ]
+        [ "_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_13_33_43_8_start" "_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_13_33_43_8_stop" ]
+        %menu.2 = local;
+        symbol [ menu %menu.2 17 16 20 ];
+        symbol [ WatchUi %tmp.21 17 27 34 ];
+        %tmp.21 = getm $.Toybox.WatchUi;
+        symbol [ Menu %tmp.22 17 35 39 ];
+        %tmp.22 = getv function ? %tmp.21 :Menu;
+        %tmp.19 = newc %tmp.22 ();
+        lputv %menu.2 %tmp.19;
+        symbol [ menu %menu.2 17 16 20 ];
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SettingsMenuDelegate.mc" 18 12 ]
+        %tmp.23 = lgetv %menu.2;
+        symbol [ menu %tmp.23 18 12 16 ];
+        symbol [ setTitle %tmp.24 18 17 25 ];
+        %tmp.24 = getv function %tmp.23 :setTitle;
+        %tmp.25 = "Room Color";
+        invoke %tmp.23 %tmp.24(%tmp.25);
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SettingsMenuDelegate.mc" 20 12 ]
+        [ "_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_13_33_43_8_start" "_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_13_33_43_8_stop" ]
+        %hasOptions.3 = local;
+        symbol [ hasOptions %hasOptions.3 20 16 26 ];
+        %tmp.26 = false;
+        lputv %hasOptions.3 %tmp.26;
+        symbol [ hasOptions %hasOptions.3 20 16 26 ];
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SettingsMenuDelegate.mc" 22 12 ]
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_22_12_26_12_if_stmt:
+        %tmp.27 = lgetv %room.1;
+        symbol [ room %tmp.27 22 16 20 ];
+        symbol [ get %tmp.28 22 21 24 ];
+        %tmp.28 = getv function %tmp.27 :get;
+        %tmp.29 = "can_temp";
+        %tmp.30 = invoke %tmp.27 %tmp.28(%tmp.29);
+        bf %tmp.30 @_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_22_12_26_12_if_end;
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_22_12_26_12_if_true:
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_22_38_26_12_start:
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SettingsMenuDelegate.mc" 23 16 ]
+        %tmp.31 = lgetv %menu.2;
+        symbol [ menu %tmp.31 23 16 20 ];
+        symbol [ addItem %tmp.32 23 21 28 ];
+        %tmp.32 = getv function %tmp.31 :addItem;
+        %tmp.33 = "Warm White";
+        %tmp.35 = const :warm;
+        symbol [ warm %tmp.35 23 44 48 const ];
+        invoke %tmp.31 %tmp.32(%tmp.33, %tmp.35);
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SettingsMenuDelegate.mc" 24 16 ]
+        %tmp.36 = lgetv %menu.2;
+        symbol [ menu %tmp.36 24 16 20 ];
+        symbol [ addItem %tmp.37 24 21 28 ];
+        %tmp.37 = getv function %tmp.36 :addItem;
+        %tmp.38 = "Cold White";
+        %tmp.40 = const :cold;
+        symbol [ cold %tmp.40 24 44 48 const ];
+        invoke %tmp.36 %tmp.37(%tmp.38, %tmp.40);
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SettingsMenuDelegate.mc" 25 16 ]
+        %tmp.41 = true;
+        lputv %hasOptions.3 %tmp.41;
+        symbol [ hasOptions %hasOptions.3 25 16 26 ];
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_22_38_26_12_stop:
+        goto @_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_22_12_26_12_if_end;
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_22_12_26_12_if_end:
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SettingsMenuDelegate.mc" 28 12 ]
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_28_12_35_12_if_stmt:
+        %tmp.42 = lgetv %room.1;
+        symbol [ room %tmp.42 28 16 20 ];
+        symbol [ get %tmp.43 28 21 24 ];
+        %tmp.43 = getv function %tmp.42 :get;
+        %tmp.44 = "can_color";
+        %tmp.45 = invoke %tmp.42 %tmp.43(%tmp.44);
+        bf %tmp.45 @_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_28_12_35_12_if_end;
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_28_12_35_12_if_true:
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_28_39_35_12_start:
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SettingsMenuDelegate.mc" 29 16 ]
+        %tmp.46 = lgetv %menu.2;
+        symbol [ menu %tmp.46 29 16 20 ];
+        symbol [ addItem %tmp.47 29 21 28 ];
+        %tmp.47 = getv function %tmp.46 :addItem;
+        %tmp.48 = "Red";
+        %tmp.50 = const :red;
+        symbol [ red %tmp.50 29 37 40 const ];
+        invoke %tmp.46 %tmp.47(%tmp.48, %tmp.50);
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SettingsMenuDelegate.mc" 30 16 ]
+        %tmp.51 = lgetv %menu.2;
+        symbol [ menu %tmp.51 30 16 20 ];
+        symbol [ addItem %tmp.52 30 21 28 ];
+        %tmp.52 = getv function %tmp.51 :addItem;
+        %tmp.53 = "Green";
+        %tmp.55 = const :green;
+        symbol [ green %tmp.55 30 39 44 const ];
+        invoke %tmp.51 %tmp.52(%tmp.53, %tmp.55);
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SettingsMenuDelegate.mc" 31 16 ]
+        %tmp.56 = lgetv %menu.2;
+        symbol [ menu %tmp.56 31 16 20 ];
+        symbol [ addItem %tmp.57 31 21 28 ];
+        %tmp.57 = getv function %tmp.56 :addItem;
+        %tmp.58 = "Blue";
+        %tmp.60 = const :blue;
+        symbol [ blue %tmp.60 31 38 42 const ];
+        invoke %tmp.56 %tmp.57(%tmp.58, %tmp.60);
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SettingsMenuDelegate.mc" 32 16 ]
+        %tmp.61 = lgetv %menu.2;
+        symbol [ menu %tmp.61 32 16 20 ];
+        symbol [ addItem %tmp.62 32 21 28 ];
+        %tmp.62 = getv function %tmp.61 :addItem;
+        %tmp.63 = "Yellow";
+        %tmp.65 = const :yellow;
+        symbol [ yellow %tmp.65 32 40 46 const ];
+        invoke %tmp.61 %tmp.62(%tmp.63, %tmp.65);
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SettingsMenuDelegate.mc" 33 16 ]
+        %tmp.66 = lgetv %menu.2;
+        symbol [ menu %tmp.66 33 16 20 ];
+        symbol [ addItem %tmp.67 33 21 28 ];
+        %tmp.67 = getv function %tmp.66 :addItem;
+        %tmp.68 = "Purple";
+        %tmp.70 = const :purple;
+        symbol [ purple %tmp.70 33 40 46 const ];
+        invoke %tmp.66 %tmp.67(%tmp.68, %tmp.70);
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SettingsMenuDelegate.mc" 34 16 ]
+        %tmp.71 = true;
+        lputv %hasOptions.3 %tmp.71;
+        symbol [ hasOptions %hasOptions.3 34 16 26 ];
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_28_39_35_12_stop:
+        goto @_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_28_12_35_12_if_end;
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_28_12_35_12_if_end:
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SettingsMenuDelegate.mc" 37 12 ]
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_37_12_39_12_if_stmt:
+        %tmp.72 = lgetv %hasOptions.3;
+        symbol [ hasOptions %tmp.72 37 17 27 ];
+        %tmp.73 = not %tmp.72;
+        bf %tmp.73 @_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_37_12_39_12_if_end;
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_37_12_39_12_if_true:
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_37_29_39_12_start:
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SettingsMenuDelegate.mc" 38 16 ]
+        %tmp.74 = lgetv %menu.2;
+        symbol [ menu %tmp.74 38 16 20 ];
+        symbol [ addItem %tmp.75 38 21 28 ];
+        %tmp.75 = getv function %tmp.74 :addItem;
+        %tmp.76 = "Not Supported";
+        %tmp.78 = const :none;
+        symbol [ none %tmp.78 38 47 51 const ];
+        invoke %tmp.74 %tmp.75(%tmp.76, %tmp.78);
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_37_29_39_12_stop:
+        goto @_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_37_12_39_12_if_end;
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_37_12_39_12_if_end:
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SettingsMenuDelegate.mc" 41 12 ]
+        [ "_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_13_33_43_8_start" "_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_13_33_43_8_stop" ]
+        %delegate.4 = local;
+        symbol [ delegate %delegate.4 41 16 24 ];
+        symbol [ ColorMenuDelegate %tmp.82 41 31 48 ];
+        %tmp.82 = getv ? :ColorMenuDelegate;
+        symbol [ view %tmp.84 41 49 53 ];
+        %tmp.84 = getv ? :view;
+        %tmp.79 = newc %tmp.82 (%tmp.84);
+        lputv %delegate.4 %tmp.79;
+        symbol [ delegate %delegate.4 41 16 24 ];
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SettingsMenuDelegate.mc" 42 12 ]
+        symbol [ WatchUi %tmp.85 42 12 19 ];
+        %tmp.85 = getm $.Toybox.WatchUi;
+        symbol [ pushView %tmp.86 42 20 28 ];
+        %tmp.86 = getv function %tmp.85 :pushView;
+        %tmp.87 = lgetv %menu.2;
+        symbol [ menu %tmp.87 42 29 33 ];
+        %tmp.88 = lgetv %delegate.4;
+        symbol [ delegate %tmp.88 42 35 43 ];
+        symbol [ WatchUi %tmp.89 42 45 52 ];
+        %tmp.89 = getm $.Toybox.WatchUi;
+        symbol [ SLIDE_UP %tmp.90 42 53 61 ];
+        %tmp.90 = getv %tmp.89 :SLIDE_UP;
+        invoke %tmp.85 %tmp.86(%tmp.87, %tmp.88, %tmp.90);
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_13_33_43_8_stop:
+        goto @_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_13_8_45_8_if_end;
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_13_8_45_8_if_false:
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SettingsMenuDelegate.mc" 43 15 ]
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_43_15_45_8_if_stmt:
+        %tmp.91 = lgetv %item;
+        symbol [ item %tmp.91 43 19 23 ];
+        %tmp.93 = const :other_settings;
+        symbol [ other_settings %tmp.93 43 28 42 const ];
+        %tmp.94 = eq %tmp.91 %tmp.93;
+        bf %tmp.94 @_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_43_15_45_8_if_end;
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_43_15_45_8_if_true:
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_43_44_45_8_start:
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SettingsMenuDelegate.mc" 44 12 ]
+        symbol [ System %tmp.95 44 12 18 ];
+        %tmp.95 = getm $.Toybox.System;
+        symbol [ println %tmp.96 44 19 26 ];
+        %tmp.96 = getv function %tmp.95 :println;
+        %tmp.97 = "Other settings - not implemented yet";
+        invoke %tmp.95 %tmp.96(%tmp.97);
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_43_44_45_8_stop:
+        goto @_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_43_15_45_8_if_end;
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_43_15_45_8_if_end:
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_13_8_45_8_if_end:
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_12_30_46_4_stop:
+    }
+}
+[ @file = "/home/eike_f/Smart_licht/SmartLightApp/source/SettingsMenuDelegate.mc"; @line = 49; @symbol_classdef = [ColorMenuDelegate,49,6,23]; @symbol_extends<0> = [WatchUi,49,32,39]; @symbol_extends<1> = [MenuInputDelegate,49,40,57]; ]
+class ColorMenuDelegate extends WatchUi.MenuInputDelegate {
+    [ @file = "/home/eike_f/Smart_licht/SmartLightApp/source/SettingsMenuDelegate.mc"; @line = 49; ]
+    <init> {
+    }
+    [ @file = "/home/eike_f/Smart_licht/SmartLightApp/source/SettingsMenuDelegate.mc"; @line = 49; ]
+    static
+    <init> {
+    }
+    [ @file = "/home/eike_f/Smart_licht/SmartLightApp/source/SettingsMenuDelegate.mc"; @line = 50; @position = 8; @symbol_vardef = [view,50,8,12]; ]
+    var view;
+    [ @file = "/home/eike_f/Smart_licht/SmartLightApp/source/SettingsMenuDelegate.mc"; @line = 52; @symbol_functiondef = [initialize,52,13,23]; @symbol_param<0> = [v,52,24,25]; ]
+    function initialize(v) as Void {
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_52_27_55_4_start:
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SettingsMenuDelegate.mc" 53 8 ]
+        symbol [ MenuInputDelegate %tmp.2 53 8 25 ];
+        %tmp.2 = getv ? :MenuInputDelegate;
+        symbol [ initialize %tmp.3 53 26 36 ];
+        %tmp.3 = getv function %tmp.2 :initialize;
+        invoke %tmp.2 %tmp.3();
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SettingsMenuDelegate.mc" 54 8 ]
+        %tmp.4 = lgetv %v;
+        symbol [ v %tmp.4 54 15 16 ];
+        symbol [ view ? 54 8 12 ];
+        putv self :view %tmp.4;
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_52_27_55_4_stop:
+    }
+    [ @file = "/home/eike_f/Smart_licht/SmartLightApp/source/SettingsMenuDelegate.mc"; @line = 57; @symbol_functiondef = [onMenuItem,57,13,23]; @symbol_param<0> = [item,57,24,28]; ]
+    function onMenuItem(item) {
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_57_30_78_4_start:
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SettingsMenuDelegate.mc" 58 8 ]
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_58_8_58_46_if_stmt:
+        symbol [ view %tmp.2 58 12 16 ];
+        %tmp.2 = getv ? :view;
+        symbol [ rooms %tmp.3 58 17 22 ];
+        %tmp.3 = getv %tmp.2 :rooms;
+        symbol [ size %tmp.4 58 23 27 ];
+        %tmp.4 = getv function %tmp.3 :size;
+        %tmp.5 = invoke %tmp.3 %tmp.4();
+        %tmp.6 = 0;
+        %tmp.7 = eq %tmp.5 %tmp.6;
+        bf %tmp.7 @_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_58_8_58_46_if_end;
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_58_8_58_46_if_true:
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_58_36_58_46_start:
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SettingsMenuDelegate.mc" 58 38 ]
+        ret ?;
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_58_36_58_46_stop:
+        goto @_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_58_8_58_46_if_end;
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_58_8_58_46_if_end:
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SettingsMenuDelegate.mc" 59 8 ]
+        [ "_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_57_30_78_4_start" "_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_57_30_78_4_stop" ]
+        %roomId.1 = local;
+        symbol [ roomId %roomId.1 59 12 18 ];
+        symbol [ view %tmp.9 59 21 25 ];
+        %tmp.9 = getv ? :view;
+        symbol [ rooms %tmp.10 59 26 31 ];
+        %tmp.10 = getv %tmp.9 :rooms;
+        symbol [ view %tmp.12 59 32 36 ];
+        %tmp.12 = getv ? :view;
+        symbol [ currentIndex %tmp.13 59 37 49 ];
+        %tmp.13 = getv %tmp.12 :currentIndex;
+        %tmp.14 = agetv %tmp.10 %tmp.13;
+        symbol [ get %tmp.15 59 51 54 ];
+        %tmp.15 = getv function %tmp.14 :get;
+        %tmp.16 = "id";
+        %tmp.17 = invoke %tmp.14 %tmp.15(%tmp.16);
+        lputv %roomId.1 %tmp.17;
+        symbol [ roomId %roomId.1 59 12 18 ];
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SettingsMenuDelegate.mc" 61 8 ]
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_61_8_75_8_if_stmt:
+        %tmp.18 = lgetv %item;
+        symbol [ item %tmp.18 61 12 16 ];
+        %tmp.20 = const :warm;
+        symbol [ warm %tmp.20 61 21 25 const ];
+        %tmp.21 = eq %tmp.18 %tmp.20;
+        bf %tmp.21 @_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_61_8_75_8_if_false;
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_61_8_75_8_if_true:
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_61_27_63_8_start:
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SettingsMenuDelegate.mc" 62 12 ]
+        symbol [ view %tmp.23 62 12 16 ];
+        %tmp.23 = getv ? :view;
+        symbol [ apiClient %tmp.24 62 17 26 ];
+        %tmp.24 = getv %tmp.23 :apiClient;
+        symbol [ setRoomTemperature %tmp.25 62 27 45 ];
+        %tmp.25 = getv function %tmp.24 :setRoomTemperature;
+        %tmp.26 = lgetv %roomId.1;
+        symbol [ roomId %tmp.26 62 46 52 ];
+        %tmp.27 = 2202;
+        invoke %tmp.24 %tmp.25(%tmp.26, %tmp.27);
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_61_27_63_8_stop:
+        goto @_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_61_8_75_8_if_end;
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_61_8_75_8_if_false:
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SettingsMenuDelegate.mc" 63 15 ]
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_63_15_75_8_if_stmt:
+        %tmp.28 = lgetv %item;
+        symbol [ item %tmp.28 63 19 23 ];
+        %tmp.30 = const :cold;
+        symbol [ cold %tmp.30 63 28 32 const ];
+        %tmp.31 = eq %tmp.28 %tmp.30;
+        bf %tmp.31 @_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_63_15_75_8_if_false;
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_63_15_75_8_if_true:
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_63_34_65_8_start:
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SettingsMenuDelegate.mc" 64 12 ]
+        symbol [ view %tmp.33 64 12 16 ];
+        %tmp.33 = getv ? :view;
+        symbol [ apiClient %tmp.34 64 17 26 ];
+        %tmp.34 = getv %tmp.33 :apiClient;
+        symbol [ setRoomTemperature %tmp.35 64 27 45 ];
+        %tmp.35 = getv function %tmp.34 :setRoomTemperature;
+        %tmp.36 = lgetv %roomId.1;
+        symbol [ roomId %tmp.36 64 46 52 ];
+        %tmp.37 = 4000;
+        invoke %tmp.34 %tmp.35(%tmp.36, %tmp.37);
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_63_34_65_8_stop:
+        goto @_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_63_15_75_8_if_end;
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_63_15_75_8_if_false:
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SettingsMenuDelegate.mc" 65 15 ]
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_65_15_75_8_if_stmt:
+        %tmp.38 = lgetv %item;
+        symbol [ item %tmp.38 65 19 23 ];
+        %tmp.40 = const :red;
+        symbol [ red %tmp.40 65 28 31 const ];
+        %tmp.41 = eq %tmp.38 %tmp.40;
+        bf %tmp.41 @_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_65_15_75_8_if_false;
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_65_15_75_8_if_true:
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_65_33_67_8_start:
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SettingsMenuDelegate.mc" 66 12 ]
+        symbol [ view %tmp.43 66 12 16 ];
+        %tmp.43 = getv ? :view;
+        symbol [ apiClient %tmp.44 66 17 26 ];
+        %tmp.44 = getv %tmp.43 :apiClient;
+        symbol [ setRoomColor %tmp.45 66 27 39 ];
+        %tmp.45 = getv function %tmp.44 :setRoomColor;
+        %tmp.46 = lgetv %roomId.1;
+        symbol [ roomId %tmp.46 66 40 46 ];
+        %tmp.47 = 0;
+        %tmp.48 = 1.0;
+        invoke %tmp.44 %tmp.45(%tmp.46, %tmp.47, %tmp.48);
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_65_33_67_8_stop:
+        goto @_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_65_15_75_8_if_end;
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_65_15_75_8_if_false:
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SettingsMenuDelegate.mc" 67 15 ]
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_67_15_75_8_if_stmt:
+        %tmp.49 = lgetv %item;
+        symbol [ item %tmp.49 67 19 23 ];
+        %tmp.51 = const :green;
+        symbol [ green %tmp.51 67 28 33 const ];
+        %tmp.52 = eq %tmp.49 %tmp.51;
+        bf %tmp.52 @_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_67_15_75_8_if_false;
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_67_15_75_8_if_true:
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_67_35_69_8_start:
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SettingsMenuDelegate.mc" 68 12 ]
+        symbol [ view %tmp.54 68 12 16 ];
+        %tmp.54 = getv ? :view;
+        symbol [ apiClient %tmp.55 68 17 26 ];
+        %tmp.55 = getv %tmp.54 :apiClient;
+        symbol [ setRoomColor %tmp.56 68 27 39 ];
+        %tmp.56 = getv function %tmp.55 :setRoomColor;
+        %tmp.57 = lgetv %roomId.1;
+        symbol [ roomId %tmp.57 68 40 46 ];
+        %tmp.58 = 120;
+        %tmp.59 = 1.0;
+        invoke %tmp.55 %tmp.56(%tmp.57, %tmp.58, %tmp.59);
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_67_35_69_8_stop:
+        goto @_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_67_15_75_8_if_end;
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_67_15_75_8_if_false:
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SettingsMenuDelegate.mc" 69 15 ]
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_69_15_75_8_if_stmt:
+        %tmp.60 = lgetv %item;
+        symbol [ item %tmp.60 69 19 23 ];
+        %tmp.62 = const :blue;
+        symbol [ blue %tmp.62 69 28 32 const ];
+        %tmp.63 = eq %tmp.60 %tmp.62;
+        bf %tmp.63 @_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_69_15_75_8_if_false;
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_69_15_75_8_if_true:
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_69_34_71_8_start:
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SettingsMenuDelegate.mc" 70 12 ]
+        symbol [ view %tmp.65 70 12 16 ];
+        %tmp.65 = getv ? :view;
+        symbol [ apiClient %tmp.66 70 17 26 ];
+        %tmp.66 = getv %tmp.65 :apiClient;
+        symbol [ setRoomColor %tmp.67 70 27 39 ];
+        %tmp.67 = getv function %tmp.66 :setRoomColor;
+        %tmp.68 = lgetv %roomId.1;
+        symbol [ roomId %tmp.68 70 40 46 ];
+        %tmp.69 = 240;
+        %tmp.70 = 1.0;
+        invoke %tmp.66 %tmp.67(%tmp.68, %tmp.69, %tmp.70);
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_69_34_71_8_stop:
+        goto @_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_69_15_75_8_if_end;
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_69_15_75_8_if_false:
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SettingsMenuDelegate.mc" 71 15 ]
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_71_15_75_8_if_stmt:
+        %tmp.71 = lgetv %item;
+        symbol [ item %tmp.71 71 19 23 ];
+        %tmp.73 = const :yellow;
+        symbol [ yellow %tmp.73 71 28 34 const ];
+        %tmp.74 = eq %tmp.71 %tmp.73;
+        bf %tmp.74 @_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_71_15_75_8_if_false;
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_71_15_75_8_if_true:
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_71_36_73_8_start:
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SettingsMenuDelegate.mc" 72 12 ]
+        symbol [ view %tmp.76 72 12 16 ];
+        %tmp.76 = getv ? :view;
+        symbol [ apiClient %tmp.77 72 17 26 ];
+        %tmp.77 = getv %tmp.76 :apiClient;
+        symbol [ setRoomColor %tmp.78 72 27 39 ];
+        %tmp.78 = getv function %tmp.77 :setRoomColor;
+        %tmp.79 = lgetv %roomId.1;
+        symbol [ roomId %tmp.79 72 40 46 ];
+        %tmp.80 = 60;
+        %tmp.81 = 1.0;
+        invoke %tmp.77 %tmp.78(%tmp.79, %tmp.80, %tmp.81);
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_71_36_73_8_stop:
+        goto @_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_71_15_75_8_if_end;
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_71_15_75_8_if_false:
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SettingsMenuDelegate.mc" 73 15 ]
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_73_15_75_8_if_stmt:
+        %tmp.82 = lgetv %item;
+        symbol [ item %tmp.82 73 19 23 ];
+        %tmp.84 = const :purple;
+        symbol [ purple %tmp.84 73 28 34 const ];
+        %tmp.85 = eq %tmp.82 %tmp.84;
+        bf %tmp.85 @_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_73_15_75_8_if_end;
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_73_15_75_8_if_true:
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_73_36_75_8_start:
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SettingsMenuDelegate.mc" 74 12 ]
+        symbol [ view %tmp.87 74 12 16 ];
+        %tmp.87 = getv ? :view;
+        symbol [ apiClient %tmp.88 74 17 26 ];
+        %tmp.88 = getv %tmp.87 :apiClient;
+        symbol [ setRoomColor %tmp.89 74 27 39 ];
+        %tmp.89 = getv function %tmp.88 :setRoomColor;
+        %tmp.90 = lgetv %roomId.1;
+        symbol [ roomId %tmp.90 74 40 46 ];
+        %tmp.91 = 300;
+        %tmp.92 = 1.0;
+        invoke %tmp.88 %tmp.89(%tmp.90, %tmp.91, %tmp.92);
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_73_36_75_8_stop:
+        goto @_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_73_15_75_8_if_end;
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_73_15_75_8_if_end:
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_71_15_75_8_if_end:
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_69_15_75_8_if_end:
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_67_15_75_8_if_end:
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_65_15_75_8_if_end:
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_63_15_75_8_if_end:
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_61_8_75_8_if_end:
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SettingsMenuDelegate.mc" 77 8 ]
+        symbol [ WatchUi %tmp.93 77 8 15 ];
+        %tmp.93 = getm $.Toybox.WatchUi;
+        symbol [ popView %tmp.94 77 16 23 ];
+        %tmp.94 = getv function %tmp.93 :popView;
+        symbol [ WatchUi %tmp.95 77 24 31 ];
+        %tmp.95 = getm $.Toybox.WatchUi;
+        symbol [ SLIDE_DOWN %tmp.96 77 32 42 ];
+        %tmp.96 = getv %tmp.95 :SLIDE_DOWN;
+        invoke %tmp.93 %tmp.94(%tmp.96);
+_home_eike_f_Smart_licht_SmartLightApp_source_SettingsMenuDelegate_mc_57_30_78_4_stop:
+    }
+}
+[ @file = "/home/eike_f/Smart_licht/SmartLightApp/source/SettingsMenuDelegate.mc"; @line = 1; ]
+<init> {
+}

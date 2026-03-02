@@ -1,0 +1,410 @@
+[ @file = "/home/eike_f/Smart_licht/SmartLightApp/source/SmartLightDelegate.mc"; @line = 1; @symbol_usingdef<0> = [Toybox,1,6,12]; @symbol_usingdef<1> = [WatchUi,1,13,20]; ]
+using Toybox.WatchUi;
+[ @file = "/home/eike_f/Smart_licht/SmartLightApp/source/SmartLightDelegate.mc"; @line = 2; @symbol_usingdef<0> = [Toybox,2,6,12]; @symbol_usingdef<1> = [System,2,13,19]; ]
+using Toybox.System;
+[ @file = "/home/eike_f/Smart_licht/SmartLightApp/source/SmartLightDelegate.mc"; @line = 4; @symbol_classdef = [SmartLightDelegate,4,6,24]; @symbol_extends<0> = [WatchUi,4,33,40]; @symbol_extends<1> = [BehaviorDelegate,4,41,57]; ]
+class SmartLightDelegate extends WatchUi.BehaviorDelegate {
+    [ @file = "/home/eike_f/Smart_licht/SmartLightApp/source/SmartLightDelegate.mc"; @line = 4; ]
+    <init> {
+    }
+    [ @file = "/home/eike_f/Smart_licht/SmartLightApp/source/SmartLightDelegate.mc"; @line = 4; ]
+    static
+    <init> {
+    }
+    [ @file = "/home/eike_f/Smart_licht/SmartLightApp/source/SmartLightDelegate.mc"; @line = 5; @position = 8; @symbol_vardef = [view,5,8,12]; ]
+    var view;
+    [ @file = "/home/eike_f/Smart_licht/SmartLightApp/source/SmartLightDelegate.mc"; @line = 7; @symbol_functiondef = [initialize,7,13,23]; @symbol_param<0> = [v,7,24,25]; ]
+    function initialize(v) as Void {
+_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_7_27_10_4_start:
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SmartLightDelegate.mc" 8 8 ]
+        symbol [ BehaviorDelegate %tmp.2 8 8 24 ];
+        %tmp.2 = getv ? :BehaviorDelegate;
+        symbol [ initialize %tmp.3 8 25 35 ];
+        %tmp.3 = getv function %tmp.2 :initialize;
+        invoke %tmp.2 %tmp.3();
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SmartLightDelegate.mc" 9 8 ]
+        %tmp.4 = lgetv %v;
+        symbol [ v %tmp.4 9 15 16 ];
+        symbol [ view ? 9 8 12 ];
+        putv self :view %tmp.4;
+_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_7_27_10_4_stop:
+    }
+    [ @file = "/home/eike_f/Smart_licht/SmartLightApp/source/SmartLightDelegate.mc"; @line = 12; @symbol_functiondef = [onSelect,12,13,21]; ]
+    function onSelect() {
+_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_12_24_16_4_start:
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SmartLightDelegate.mc" 13 8 ]
+        symbol [ System %tmp.1 13 8 14 ];
+        %tmp.1 = getm $.Toybox.System;
+        symbol [ println %tmp.2 13 15 22 ];
+        %tmp.2 = getv function %tmp.1 :println;
+        %tmp.3 = "DEBUG: onSelect (Button) Pressed";
+        invoke %tmp.1 %tmp.2(%tmp.3);
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SmartLightDelegate.mc" 14 8 ]
+        symbol [ view %tmp.5 14 8 12 ];
+        %tmp.5 = getv ? :view;
+        symbol [ toggleCurrentRoom %tmp.6 14 13 30 ];
+        %tmp.6 = getv function %tmp.5 :toggleCurrentRoom;
+        invoke %tmp.5 %tmp.6();
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SmartLightDelegate.mc" 15 8 ]
+        %tmp.7 = true;
+        ret %tmp.7;
+_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_12_24_16_4_stop:
+    }
+    [ @file = "/home/eike_f/Smart_licht/SmartLightApp/source/SmartLightDelegate.mc"; @line = 18; @symbol_functiondef = [onMenu,18,13,19]; ]
+    function onMenu() {
+_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_18_22_22_4_start:
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SmartLightDelegate.mc" 20 8 ]
+        symbol [ view %tmp.2 20 8 12 ];
+        %tmp.2 = getv ? :view;
+        symbol [ showSettingsMenu %tmp.3 20 13 29 ];
+        %tmp.3 = getv function %tmp.2 :showSettingsMenu;
+        invoke %tmp.2 %tmp.3();
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SmartLightDelegate.mc" 21 8 ]
+        %tmp.4 = true;
+        ret %tmp.4;
+_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_18_22_22_4_stop:
+    }
+    [ @file = "/home/eike_f/Smart_licht/SmartLightApp/source/SmartLightDelegate.mc"; @line = 24; @symbol_functiondef = [onNextPage,24,13,23]; ]
+    function onNextPage() {
+_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_24_26_31_4_start:
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SmartLightDelegate.mc" 26 8 ]
+_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_26_8_28_8_if_stmt:
+_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_26_12_26_63_begin:
+        symbol [ view %tmp.2 26 12 16 ];
+        %tmp.2 = getv ? :view;
+        symbol [ isRequestInFlight %tmp.3 26 17 34 ];
+        %tmp.3 = getv %tmp.2 :isRequestInFlight;
+        bt %tmp.3 @_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_26_8_28_8_if_true;
+_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_26_38_26_63_false:
+        symbol [ view %tmp.5 26 38 42 ];
+        %tmp.5 = getv ? :view;
+        symbol [ queuedBrightness %tmp.6 26 43 59 ];
+        %tmp.6 = getv %tmp.5 :queuedBrightness;
+        %tmp.7 = null;
+        %tmp.8 = ne %tmp.6 %tmp.7;
+        push %tmp.8;
+_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_26_38_26_63_end:
+        %tmp.9 = phi [%tmp.3 @_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_26_12_26_63_begin] [%tmp.8 @_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_26_38_26_63_false] [%tmp.9 @_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_26_38_26_63_end];
+        bf %tmp.9 @_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_26_8_28_8_if_end;
+_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_26_8_28_8_if_true:
+_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_26_69_28_8_start:
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SmartLightDelegate.mc" 27 12 ]
+        %tmp.10 = true;
+        ret %tmp.10;
+_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_26_69_28_8_stop:
+        goto @_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_26_8_28_8_if_end;
+_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_26_8_28_8_if_end:
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SmartLightDelegate.mc" 29 8 ]
+        symbol [ view %tmp.12 29 8 12 ];
+        %tmp.12 = getv ? :view;
+        symbol [ nextRoom %tmp.13 29 13 21 ];
+        %tmp.13 = getv function %tmp.12 :nextRoom;
+        invoke %tmp.12 %tmp.13();
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SmartLightDelegate.mc" 30 8 ]
+        %tmp.14 = true;
+        ret %tmp.14;
+_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_24_26_31_4_stop:
+    }
+    [ @file = "/home/eike_f/Smart_licht/SmartLightApp/source/SmartLightDelegate.mc"; @line = 33; @symbol_functiondef = [onPreviousPage,33,13,27]; ]
+    function onPreviousPage() {
+_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_33_30_39_4_start:
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SmartLightDelegate.mc" 34 8 ]
+_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_34_8_36_8_if_stmt:
+_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_34_12_34_63_begin:
+        symbol [ view %tmp.2 34 12 16 ];
+        %tmp.2 = getv ? :view;
+        symbol [ isRequestInFlight %tmp.3 34 17 34 ];
+        %tmp.3 = getv %tmp.2 :isRequestInFlight;
+        bt %tmp.3 @_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_34_8_36_8_if_true;
+_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_34_38_34_63_false:
+        symbol [ view %tmp.5 34 38 42 ];
+        %tmp.5 = getv ? :view;
+        symbol [ queuedBrightness %tmp.6 34 43 59 ];
+        %tmp.6 = getv %tmp.5 :queuedBrightness;
+        %tmp.7 = null;
+        %tmp.8 = ne %tmp.6 %tmp.7;
+        push %tmp.8;
+_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_34_38_34_63_end:
+        %tmp.9 = phi [%tmp.3 @_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_34_12_34_63_begin] [%tmp.8 @_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_34_38_34_63_false] [%tmp.9 @_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_34_38_34_63_end];
+        bf %tmp.9 @_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_34_8_36_8_if_end;
+_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_34_8_36_8_if_true:
+_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_34_69_36_8_start:
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SmartLightDelegate.mc" 35 12 ]
+        %tmp.10 = true;
+        ret %tmp.10;
+_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_34_69_36_8_stop:
+        goto @_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_34_8_36_8_if_end;
+_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_34_8_36_8_if_end:
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SmartLightDelegate.mc" 37 8 ]
+        symbol [ view %tmp.12 37 8 12 ];
+        %tmp.12 = getv ? :view;
+        symbol [ prevRoom %tmp.13 37 13 21 ];
+        %tmp.13 = getv function %tmp.12 :prevRoom;
+        invoke %tmp.12 %tmp.13();
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SmartLightDelegate.mc" 38 8 ]
+        %tmp.14 = true;
+        ret %tmp.14;
+_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_33_30_39_4_stop:
+    }
+    [ @file = "/home/eike_f/Smart_licht/SmartLightApp/source/SmartLightDelegate.mc"; @line = 41; @symbol_functiondef = [onTap,41,13,18]; @symbol_param<0> = [clickEvent,41,19,29]; ]
+    function onTap(clickEvent) {
+_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_41_31_52_4_start:
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SmartLightDelegate.mc" 42 8 ]
+        symbol [ System %tmp.1 42 8 14 ];
+        %tmp.1 = getm $.Toybox.System;
+        symbol [ println %tmp.2 42 15 22 ];
+        %tmp.2 = getv function %tmp.1 :println;
+        %tmp.3 = "DEBUG: onTap (Screen) Pressed";
+        invoke %tmp.1 %tmp.2(%tmp.3);
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SmartLightDelegate.mc" 43 8 ]
+_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_43_8_50_8_if_stmt:
+        %tmp.4 = lgetv %clickEvent;
+        symbol [ clickEvent %tmp.4 43 12 22 ];
+        %tmp.5 = null;
+        %tmp.6 = ne %tmp.4 %tmp.5;
+        bf %tmp.6 @_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_43_8_50_8_if_end;
+_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_43_8_50_8_if_true:
+_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_43_32_50_8_start:
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SmartLightDelegate.mc" 44 12 ]
+        [ "_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_43_32_50_8_start" "_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_43_32_50_8_stop" ]
+        %coords.1 = local;
+        symbol [ coords %coords.1 44 16 22 ];
+        %tmp.7 = lgetv %clickEvent;
+        symbol [ clickEvent %tmp.7 44 25 35 ];
+        %tmp.8 = as %tmp.7 { (!Null) };
+        symbol [ getCoordinates %tmp.9 44 36 50 ];
+        %tmp.9 = getv function %tmp.8 :getCoordinates;
+        %tmp.10 = invoke %tmp.8 %tmp.9();
+        lputv %coords.1 %tmp.10;
+        symbol [ coords %coords.1 44 16 22 ];
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SmartLightDelegate.mc" 45 12 ]
+_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_45_12_47_12_if_stmt:
+        symbol [ view %tmp.12 45 16 20 ];
+        %tmp.12 = getv ? :view;
+        symbol [ setBrightnessByCoordinate %tmp.13 45 21 46 ];
+        %tmp.13 = getv function %tmp.12 :setBrightnessByCoordinate;
+        %tmp.14 = lgetv %coords.1;
+        symbol [ coords %tmp.14 45 47 53 ];
+        %tmp.15 = 0;
+        %tmp.16 = agetv %tmp.14 %tmp.15;
+        %tmp.17 = lgetv %coords.1;
+        symbol [ coords %tmp.17 45 58 64 ];
+        %tmp.18 = 1;
+        %tmp.19 = agetv %tmp.17 %tmp.18;
+        %tmp.20 = invoke %tmp.12 %tmp.13(%tmp.16, %tmp.19);
+        bf %tmp.20 @_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_45_12_47_12_if_end;
+_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_45_12_47_12_if_true:
+_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_45_70_47_12_start:
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SmartLightDelegate.mc" 46 16 ]
+        %tmp.21 = true;
+        ret %tmp.21;
+_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_45_70_47_12_stop:
+        goto @_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_45_12_47_12_if_end;
+_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_45_12_47_12_if_end:
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SmartLightDelegate.mc" 49 12 ]
+        symbol [ view %tmp.23 49 12 16 ];
+        %tmp.23 = getv ? :view;
+        symbol [ toggleCurrentRoom %tmp.24 49 17 34 ];
+        %tmp.24 = getv function %tmp.23 :toggleCurrentRoom;
+        invoke %tmp.23 %tmp.24();
+_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_43_32_50_8_stop:
+        goto @_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_43_8_50_8_if_end;
+_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_43_8_50_8_if_end:
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SmartLightDelegate.mc" 51 8 ]
+        %tmp.25 = true;
+        ret %tmp.25;
+_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_41_31_52_4_stop:
+    }
+    [ @file = "/home/eike_f/Smart_licht/SmartLightApp/source/SmartLightDelegate.mc"; @line = 54; @symbol_functiondef = [onDrag,54,13,19]; @symbol_param<0> = [dragEvent,54,20,29]; ]
+    function onDrag(dragEvent) {
+_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_54_31_60_4_start:
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SmartLightDelegate.mc" 55 8 ]
+_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_55_8_58_8_if_stmt:
+        %tmp.1 = lgetv %dragEvent;
+        symbol [ dragEvent %tmp.1 55 12 21 ];
+        %tmp.2 = null;
+        %tmp.3 = ne %tmp.1 %tmp.2;
+        bf %tmp.3 @_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_55_8_58_8_if_end;
+_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_55_8_58_8_if_true:
+_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_55_31_58_8_start:
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SmartLightDelegate.mc" 56 12 ]
+        [ "_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_55_31_58_8_start" "_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_55_31_58_8_stop" ]
+        %coords.1 = local;
+        symbol [ coords %coords.1 56 16 22 ];
+        %tmp.4 = lgetv %dragEvent;
+        symbol [ dragEvent %tmp.4 56 25 34 ];
+        %tmp.5 = as %tmp.4 { (!Null) };
+        symbol [ getCoordinates %tmp.6 56 35 49 ];
+        %tmp.6 = getv function %tmp.5 :getCoordinates;
+        %tmp.7 = invoke %tmp.5 %tmp.6();
+        lputv %coords.1 %tmp.7;
+        symbol [ coords %coords.1 56 16 22 ];
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SmartLightDelegate.mc" 57 12 ]
+        symbol [ view %tmp.9 57 12 16 ];
+        %tmp.9 = getv ? :view;
+        symbol [ setBrightnessByCoordinate %tmp.10 57 17 42 ];
+        %tmp.10 = getv function %tmp.9 :setBrightnessByCoordinate;
+        %tmp.11 = lgetv %coords.1;
+        symbol [ coords %tmp.11 57 43 49 ];
+        %tmp.12 = 0;
+        %tmp.13 = agetv %tmp.11 %tmp.12;
+        %tmp.14 = lgetv %coords.1;
+        symbol [ coords %tmp.14 57 54 60 ];
+        %tmp.15 = 1;
+        %tmp.16 = agetv %tmp.14 %tmp.15;
+        invoke %tmp.9 %tmp.10(%tmp.13, %tmp.16);
+_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_55_31_58_8_stop:
+        goto @_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_55_8_58_8_if_end;
+_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_55_8_58_8_if_end:
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SmartLightDelegate.mc" 59 8 ]
+        %tmp.17 = true;
+        ret %tmp.17;
+_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_54_31_60_4_stop:
+    }
+    [ @file = "/home/eike_f/Smart_licht/SmartLightApp/source/SmartLightDelegate.mc"; @line = 62; @symbol_functiondef = [onSwipe,62,13,20]; @symbol_param<0> = [swipeEvent,62,21,31]; ]
+    function onSwipe(swipeEvent) {
+_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_62_33_88_4_start:
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SmartLightDelegate.mc" 64 8 ]
+_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_64_8_66_8_if_stmt:
+        %tmp.1 = lgetv %swipeEvent;
+        symbol [ swipeEvent %tmp.1 64 12 22 ];
+        %tmp.2 = null;
+        %tmp.3 = eq %tmp.1 %tmp.2;
+        bf %tmp.3 @_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_64_8_66_8_if_end;
+_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_64_8_66_8_if_true:
+_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_64_32_66_8_start:
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SmartLightDelegate.mc" 65 12 ]
+        %tmp.4 = true;
+        ret %tmp.4;
+_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_64_32_66_8_stop:
+        goto @_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_64_8_66_8_if_end;
+_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_64_8_66_8_if_end:
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SmartLightDelegate.mc" 68 8 ]
+        try @_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_68_8_85_8_beginTry @_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_68_8_85_8_endTry @_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_68_8_85_8_catch @_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_68_8_85_8_finally;
+_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_68_8_85_8_beginTry:
+_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_68_12_83_8_start:
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SmartLightDelegate.mc" 69 12 ]
+        [ "_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_68_12_83_8_start" "_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_68_12_83_8_stop" ]
+        %direction.1 = local;
+        symbol [ direction %direction.1 69 16 25 ];
+        %tmp.5 = lgetv %swipeEvent;
+        symbol [ swipeEvent %tmp.5 69 28 38 ];
+        symbol [ getDirection %tmp.6 69 39 51 ];
+        %tmp.6 = getv function %tmp.5 :getDirection;
+        %tmp.7 = invoke %tmp.5 %tmp.6();
+        lputv %direction.1 %tmp.7;
+        symbol [ direction %direction.1 69 16 25 ];
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SmartLightDelegate.mc" 71 12 ]
+_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_71_12_73_12_if_stmt:
+        %tmp.8 = lgetv %direction.1;
+        symbol [ direction %tmp.8 71 16 25 ];
+        %tmp.9 = null;
+        %tmp.10 = eq %tmp.8 %tmp.9;
+        bf %tmp.10 @_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_71_12_73_12_if_end;
+_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_71_12_73_12_if_true:
+_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_71_35_73_12_start:
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SmartLightDelegate.mc" 72 16 ]
+        %tmp.11 = true;
+        jsr @_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_68_8_85_8_finally;
+        ret %tmp.11;
+_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_71_35_73_12_stop:
+        goto @_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_71_12_73_12_if_end;
+_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_71_12_73_12_if_end:
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SmartLightDelegate.mc" 76 12 ]
+_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_76_12_82_12_if_stmt:
+        %tmp.12 = lgetv %direction.1;
+        symbol [ direction %tmp.12 76 16 25 ];
+        symbol [ WatchUi %tmp.13 76 29 36 ];
+        %tmp.13 = getm $.Toybox.WatchUi;
+        symbol [ SWIPE_LEFT %tmp.14 76 37 47 ];
+        %tmp.14 = getv %tmp.13 :SWIPE_LEFT;
+        %tmp.15 = eq %tmp.12 %tmp.14;
+        bf %tmp.15 @_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_76_12_82_12_if_false;
+_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_76_12_82_12_if_true:
+_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_76_49_79_12_start:
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SmartLightDelegate.mc" 77 16 ]
+        symbol [ view %tmp.17 77 16 20 ];
+        %tmp.17 = getv ? :view;
+        symbol [ changeBrightness %tmp.18 77 21 37 ];
+        %tmp.18 = getv function %tmp.17 :changeBrightness;
+        %tmp.19 = -10;
+        invoke %tmp.17 %tmp.18(%tmp.19);
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SmartLightDelegate.mc" 78 16 ]
+        %tmp.20 = true;
+        jsr @_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_68_8_85_8_finally;
+        ret %tmp.20;
+_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_76_49_79_12_stop:
+        goto @_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_76_12_82_12_if_end;
+_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_76_12_82_12_if_false:
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SmartLightDelegate.mc" 79 19 ]
+_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_79_19_82_12_if_stmt:
+        %tmp.21 = lgetv %direction.1;
+        symbol [ direction %tmp.21 79 23 32 ];
+        symbol [ WatchUi %tmp.22 79 36 43 ];
+        %tmp.22 = getm $.Toybox.WatchUi;
+        symbol [ SWIPE_RIGHT %tmp.23 79 44 55 ];
+        %tmp.23 = getv %tmp.22 :SWIPE_RIGHT;
+        %tmp.24 = eq %tmp.21 %tmp.23;
+        bf %tmp.24 @_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_79_19_82_12_if_end;
+_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_79_19_82_12_if_true:
+_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_79_57_82_12_start:
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SmartLightDelegate.mc" 80 16 ]
+        symbol [ view %tmp.26 80 16 20 ];
+        %tmp.26 = getv ? :view;
+        symbol [ changeBrightness %tmp.27 80 21 37 ];
+        %tmp.27 = getv function %tmp.26 :changeBrightness;
+        %tmp.28 = 10;
+        invoke %tmp.26 %tmp.27(%tmp.28);
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SmartLightDelegate.mc" 81 16 ]
+        %tmp.29 = true;
+        jsr @_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_68_8_85_8_finally;
+        ret %tmp.29;
+_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_79_57_82_12_stop:
+        goto @_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_79_19_82_12_if_end;
+_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_79_19_82_12_if_end:
+_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_76_12_82_12_if_end:
+_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_68_12_83_8_stop:
+_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_68_8_85_8_endTry:
+        jsr @_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_68_8_85_8_finally;
+        goto @_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_68_8_85_8_end;
+_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_68_8_85_8_catch:
+        %tmp.30 = exception;
+        push %tmp.30;
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SmartLightDelegate.mc" 83 10 ]
+        [ "_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_68_8_85_8_catch" "_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_83_10_85_8_end" ]
+        %e.2 = local;
+        symbol [ e %e.2 83 17 18 ];
+        %tmp.31 = dup %tmp.30;
+        lputv %e.2 %tmp.31;
+        symbol [ e %e.2 83 17 18 ];
+_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_83_20_85_8_start:
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SmartLightDelegate.mc" 84 12 ]
+        symbol [ System %tmp.32 84 12 18 ];
+        %tmp.32 = getm $.Toybox.System;
+        symbol [ println %tmp.33 84 19 26 ];
+        %tmp.33 = getv function %tmp.32 :println;
+        %tmp.34 = "Error in onSwipe: ";
+        %tmp.35 = lgetv %e.2;
+        symbol [ e %tmp.35 84 50 51 ];
+        %tmp.36 = add %tmp.34 %tmp.35;
+        invoke %tmp.32 %tmp.33(%tmp.36);
+_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_83_20_85_8_stop:
+        jsr @_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_68_8_85_8_finally;
+        pop;
+        goto @_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_68_8_85_8_end;
+_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_83_10_85_8_end:
+        try @_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_68_8_85_8_catch @_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_83_10_85_8_end @_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_83_10_85_8_end @_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_68_8_85_8_finally;
+        jsr @_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_68_8_85_8_finally;
+        throw %tmp.30;
+_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_68_8_85_8_finally:
+        jsrret;
+_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_68_8_85_8_end:
+[ "/home/eike_f/Smart_licht/SmartLightApp/source/SmartLightDelegate.mc" 87 8 ]
+        %tmp.37 = true;
+        ret %tmp.37;
+_home_eike_f_Smart_licht_SmartLightApp_source_SmartLightDelegate_mc_62_33_88_4_stop:
+    }
+}
+[ @file = "/home/eike_f/Smart_licht/SmartLightApp/source/SmartLightDelegate.mc"; @line = 1; ]
+<init> {
+}

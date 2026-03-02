@@ -1,0 +1,59 @@
+{
+  "settings" : [ {
+    "key" : "bridge_ip",
+    "valueType" : "string",
+    "defaultValue" : "127.0.0.1",
+    "configTitle" : "BridgeIP",
+    "configPrompt" : null,
+    "configType" : "alphaNumeric",
+    "configError" : null,
+    "configHelpUrl" : null,
+    "configReadonly" : false,
+    "configRequired" : false,
+    "configOptions" : null,
+    "configMin" : null,
+    "configMax" : null,
+    "configMaxLength" : null
+  }, {
+    "key" : "bridge_port",
+    "valueType" : "number",
+    "defaultValue" : 8080,
+    "configTitle" : "BridgePort",
+    "configPrompt" : null,
+    "configType" : "numeric",
+    "configError" : null,
+    "configHelpUrl" : null,
+    "configReadonly" : false,
+    "configRequired" : false,
+    "configOptions" : null,
+    "configMin" : null,
+    "configMax" : null,
+    "configMaxLength" : null
+  }, {
+    "key" : "use_https",
+    "valueType" : "boolean",
+    "defaultValue" : true,
+    "configTitle" : "UseHTTPS",
+    "configPrompt" : null,
+    "configType" : "boolean",
+    "configError" : null,
+    "configHelpUrl" : null,
+    "configReadonly" : false,
+    "configRequired" : false,
+    "configOptions" : null,
+    "configMin" : null,
+    "configMax" : null,
+    "configMaxLength" : null
+  } ],
+  "supportsLiveValidation" : false,
+  "languages" : {
+    "valyrian" : {
+      "BridgePort" : "Bridge Port",
+      "BridgeIP" : "Bridge IP Adresse",
+      "Loading" : "Laden...",
+      "Error" : "Fehler",
+      "UseHTTPS" : "HTTPS verwenden",
+      "AppName" : "Smart Licht"
+    }
+  }
+}

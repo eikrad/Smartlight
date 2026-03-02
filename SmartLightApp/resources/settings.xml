@@ -1,0 +1,19 @@
+<resources>
+    <properties>
+        <property id="bridge_ip" type="string">127.0.0.1</property>
+        <property id="bridge_port" type="number">8080</property>
+        <property id="use_https" type="boolean">true</property>
+    </properties>
+
+    <settings>
+        <setting propertyKey="@Properties.bridge_ip" title="@Strings.BridgeIP">
+            <settingConfig type="alphaNumeric" />
+        </setting>
+        <setting propertyKey="@Properties.bridge_port" title="@Strings.BridgePort">
+            <settingConfig type="numeric" />
+        </setting>
+        <setting propertyKey="@Properties.use_https" title="@Strings.UseHTTPS">
+            <settingConfig type="boolean" />
+        </setting>
+    </settings>
+</resources>

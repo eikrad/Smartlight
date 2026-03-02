@@ -1,0 +1,5 @@
+# Test dependencies
+# Install: pip install -r requirements-test.txt
+# Run: pytest   or   pytest -v   or   pytest --cov=bridge --cov=scan
+pytest>=7.0.0
+pytest-cov>=4.0.0
