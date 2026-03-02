@@ -8,12 +8,12 @@ def check_ip(ip):
     # Dirigera usually listens on 8443 (HTTPS)
     try:
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        sock.settimeout(0.5) # Fast timeout
+        sock.settimeout(0.5)
         result = sock.connect_ex((ip, 8443))
         sock.close()
         if result == 0:
             return ip
-    except:
+    except OSError:
         pass
     return None
 

@@ -69,6 +69,20 @@ def initialize_hub():
         print(f"Failed to connect to hub: {e}")
         return False
 
+def _get_reachable_lights_for_room(room_id):
+    """Return (list of reachable lights for room_id, None) or (None, (json_dict, status_code))."""
+    if not hub_interface:
+        return None, ({"error": "Hub not connected"}, 500)
+    lights = hub_interface.get_lights()
+    target = [l for l in lights if l.room is not None and str(l.room.id) == str(room_id)]
+    if not target:
+        return None, ({"error": "Room not found"}, 404)
+    reachable = [l for l in target if getattr(l, "is_reachable", True)]
+    if not reachable:
+        return None, ({"error": "All lights in room are offline"}, 400)
+    return reachable, None
+
+
 # --- API Endpoints ---
 
 @app.route('/rooms', methods=['GET'])
@@ -108,26 +122,18 @@ def get_rooms():
             
             rooms_data[r_id]["total_lights"] += 1
             is_reachable = getattr(light, 'is_reachable', True)
-            
             if is_reachable:
                 rooms_data[r_id]["reachable_lights"] += 1
                 # Capabilities: if ANY reachable light supports it
                 if hasattr(light.attributes, 'color_hue') and light.attributes.color_hue is not None:
                     rooms_data[r_id]["can_color"] = True
-                # Many IKEA bulbs have color_temperature even if they don't have color_hue
                 if hasattr(light.attributes, 'color_temperature') and light.attributes.color_temperature is not None:
                     rooms_data[r_id]["can_temp"] = True
-            
+
             is_actually_on = light.attributes.is_on and is_reachable
-            
-            # Debug output for lights that appear on but are unreachable
             if light.attributes.is_on and not is_reachable:
                 print(f"  [DEBUG] Light {light.id} in {r_name} is marked ON but is unreachable (no power)")
-            
-            # Track reachable lights
-            if is_reachable:
-                rooms_data[r_id]["reachable_lights"] += 1
-            
+
             # Aggregate state: If any light is on AND reachable, room is on
             if is_actually_on:
                 rooms_data[r_id]["is_on"] = True
@@ -166,51 +172,22 @@ def get_rooms():
                 # All lights are off, use fallback value
                 rooms_data[r_id]["brightness"] = int(round(rooms_data[r_id].get("brightness_fallback", 0) / 10.0) * 10)
             
-            # Clean up temporary tracking fields
-            if "brightness_sum_on" in rooms_data[r_id]:
-                del rooms_data[r_id]["brightness_sum_on"]
-            if "brightness_count_on" in rooms_data[r_id]:
-                del rooms_data[r_id]["brightness_count_on"]
-            if "brightness_fallback" in rooms_data[r_id]:
-                del rooms_data[r_id]["brightness_fallback"]
-            if "total_lights" in rooms_data[r_id]:
-                del rooms_data[r_id]["total_lights"]
-            if "reachable_lights" in rooms_data[r_id]:
-                del rooms_data[r_id]["reachable_lights"]
-        
+            for key in ("brightness_sum_on", "brightness_count_on", "brightness_fallback", "total_lights", "reachable_lights"):
+                rooms_data[r_id].pop(key, None)
         return jsonify({"rooms": list(rooms_data.values())})
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
 @app.route('/rooms/<room_id>/toggle', methods=['POST'])
 def toggle_room(room_id):
-    if not hub_interface:
-        return jsonify({"error": "Hub not connected"}), 500
-    
+    reachable_lights, err = _get_reachable_lights_for_room(room_id)
+    if err:
+        return jsonify(err[0]), err[1]
     try:
-        lights = hub_interface.get_lights()
-        # Convert room_id to string for comparison, and handle lights without rooms
-        target_lights = [l for l in lights if l.room is not None and str(l.room.id) == str(room_id)]
-        
-        if not target_lights:
-            return jsonify({"error": "Room not found"}), 404
-            
-        # Filter to only reachable lights (lights with power/connection)
-        # is_reachable is on the device object, not on attributes
-        reachable_lights = [l for l in target_lights if getattr(l, 'is_reachable', True)]
-        
-        if not reachable_lights:
-            return jsonify({"error": "All lights in room are offline"}), 400
-        
-        # Determine target state (if any reachable light is ON, turn all OFF. Else ON)
-        # Only consider reachable lights to avoid toggling based on lights with no power
         any_on = any(l.attributes.is_on for l in reachable_lights)
         target_state = not any_on
-        
-        # Only toggle reachable lights
         for light in reachable_lights:
             light.set_light(lamp_on=target_state)
-            
         return jsonify({"success": True, "new_state": target_state})
     except Exception as e:
         import traceback
@@ -219,41 +196,17 @@ def toggle_room(room_id):
 
 @app.route('/rooms/<room_id>/brightness', methods=['POST'])
 def set_brightness(room_id):
-    if not hub_interface:
-        return jsonify({"error": "Hub not connected"}), 500
-    
+    reachable_lights, err = _get_reachable_lights_for_room(room_id)
+    if err:
+        return jsonify(err[0]), err[1]
+    data = request.get_json(silent=True)
+    if not data or data.get("level") is None:
+        return jsonify({"error": "Missing 'level'"}), 400
     try:
-        level = request.json.get('level') # 0-100
-        if level is None:
-            return jsonify({"error": "Missing 'level'"}), 400
-        
-        # Round to nearest 10% step (many smart lights work better with steps)
-        # This prevents values that the lights don't support exactly
-        level = int(round(level / 10.0) * 10)
-        if level > 100:
-            level = 100
-        if level < 0:
-            level = 0
-            
-        lights = hub_interface.get_lights()
-        # Convert room_id to string for comparison, and handle lights without rooms
-        target_lights = [l for l in lights if l.room is not None and str(l.room.id) == str(room_id)]
-        
-        if not target_lights:
-            return jsonify({"error": "Room not found"}), 404
-        
-        # Filter to only reachable lights (lights with power/connection)
-        # is_reachable is on the device object, not on attributes
-        reachable_lights = [l for l in target_lights if getattr(l, 'is_reachable', True)]
-        
-        if not reachable_lights:
-            return jsonify({"error": "All lights in room are offline"}), 400
-        
-        # Only set brightness on reachable lights
+        level = int(round(data["level"] / 10.0) * 10)
+        level = max(0, min(100, level))
         for light in reachable_lights:
-            # Dirigera uses 0-100 normally
             light.set_light_level(light_level=level)
-            
         return jsonify({"success": True, "level": level, "room_id": room_id})
     except Exception as e:
         import traceback
@@ -262,28 +215,21 @@ def set_brightness(room_id):
 
 @app.route('/rooms/<room_id>/color', methods=['POST'])
 def set_room_color(room_id):
-    if not hub_interface:
-        return jsonify({"error": "Hub not connected"}), 500
+    reachable_lights, err = _get_reachable_lights_for_room(room_id)
+    if err:
+        return jsonify(err[0]), err[1]
+    data = request.get_json(silent=True)
+    if not data:
+        return jsonify({"error": "Missing JSON body"}), 400
+    hue, saturation = data.get("hue"), data.get("saturation")
+    if hue is None or saturation is None:
+        return jsonify({"error": "Missing 'hue' or 'saturation'"}), 400
     try:
-        data = request.get_json(silent=True)
-        if not data:
-            return jsonify({"error": "Missing JSON body"}), 400
-            
-        hue = data.get('hue')
-        saturation = data.get('saturation')
-        if hue is None or saturation is None:
-            return jsonify({"error": "Missing 'hue' or 'saturation'"}), 400
-            
-        lights = hub_interface.get_lights()
-        target_lights = [l for l in lights if l.room is not None and str(l.room.id) == str(room_id)]
-        reachable_lights = [l for l in target_lights if getattr(l, 'is_reachable', True)]
-        
         count = 0
         for light in reachable_lights:
-            if hasattr(light, 'set_light_color') and hasattr(light.attributes, 'color_hue'):
+            if hasattr(light, "set_light_color") and hasattr(light.attributes, "color_hue"):
                 light.set_light_color(hue=float(hue), saturation=float(saturation))
                 count += 1
-                
         return jsonify({"success": True, "room_id": room_id, "updated": count})
     except Exception as e:
         import traceback
@@ -292,27 +238,19 @@ def set_room_color(room_id):
 
 @app.route('/rooms/<room_id>/temperature', methods=['POST'])
 def set_room_temperature(room_id):
-    if not hub_interface:
-        return jsonify({"error": "Hub not connected"}), 500
+    reachable_lights, err = _get_reachable_lights_for_room(room_id)
+    if err:
+        return jsonify(err[0]), err[1]
+    data = request.get_json(silent=True)
+    if not data or data.get("temperature") is None:
+        return jsonify({"error": "Missing 'temperature'"}), 400
     try:
-        data = request.get_json(silent=True)
-        if not data:
-            return jsonify({"error": "Missing JSON body"}), 400
-            
-        temp = data.get('temperature')
-        if temp is None:
-            return jsonify({"error": "Missing 'temperature'"}), 400
-            
-        lights = hub_interface.get_lights()
-        target_lights = [l for l in lights if l.room is not None and str(l.room.id) == str(room_id)]
-        reachable_lights = [l for l in target_lights if getattr(l, 'is_reachable', True)]
-        
+        temp = int(data["temperature"])
         count = 0
         for light in reachable_lights:
-            if hasattr(light, 'set_color_temperature') and hasattr(light.attributes, 'color_temperature'):
-                light.set_color_temperature(color_temp=int(temp))
+            if hasattr(light, "set_color_temperature") and hasattr(light.attributes, "color_temperature"):
+                light.set_color_temperature(color_temp=temp)
                 count += 1
-                
         return jsonify({"success": True, "room_id": room_id, "updated": count})
     except Exception as e:
         import traceback

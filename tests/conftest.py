@@ -1,12 +1,53 @@
 """
 Pytest fixtures for Smart Licht tests.
 """
+import importlib.util
 import json
 import os
+import sys
 import tempfile
 from unittest.mock import MagicMock
 
 import pytest
+
+# #region agent log
+_logpath = "/home/eike_f/Smart_licht/.cursor/debug-96e8be.log"
+try:
+    _spec = importlib.util.find_spec("dirigera")
+    with open(_logpath, "a") as _f:
+        _f.write(
+            json.dumps(
+                {
+                    "sessionId": "96e8be",
+                    "hypothesisId": "H6",
+                    "message": "conftest before import bridge",
+                    "data": {
+                        "executable": sys.executable,
+                        "virtual_env": os.environ.get("VIRTUAL_ENV"),
+                        "path_len": len(sys.path),
+                        "path_sample": sys.path[:3] if len(sys.path) >= 3 else sys.path,
+                        "dirigera_found": _spec is not None,
+                    },
+                    "timestamp": __import__("time").time_ns() // 1_000_000,
+                }
+            )
+            + "\n"
+        )
+except Exception as _e:
+    with open(_logpath, "a") as _f:
+        _f.write(
+            json.dumps(
+                {
+                    "sessionId": "96e8be",
+                    "hypothesisId": "H1",
+                    "message": "conftest log error",
+                    "data": {"error": str(_e)},
+                    "timestamp": __import__("time").time_ns() // 1_000_000,
+                }
+            )
+            + "\n"
+        )
+# #endregion
 
 # Import app and bridge module for patching
 import bridge
