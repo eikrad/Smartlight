@@ -1,11 +1,21 @@
 import socket
 import concurrent.futures
+import sys
 
-# Your subnet based on your local IP (172.17.112.x)
-SUBNET = "172.17.112" 
 
-def check_ip(ip):
-    # Dirigera usually listens on 8443 (HTTPS)
+def _local_subnet() -> str:
+    """Detect the subnet of the primary outbound network interface."""
+    try:
+        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        s.connect(("8.8.8.8", 80))
+        local_ip = s.getsockname()[0]
+        s.close()
+        return ".".join(local_ip.split(".")[:3])
+    except OSError:
+        return "192.168.1"
+
+
+def check_ip(ip: str) -> str | None:
     try:
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         sock.settimeout(0.5)
@@ -17,21 +27,26 @@ def check_ip(ip):
         pass
     return None
 
-def scan():
-    print(f"Scanning {SUBNET}.1 to {SUBNET}.254 for Dirigera Hub (Port 8443)...")
+
+def scan(subnet: str | None = None) -> list[str]:
+    subnet = subnet or _local_subnet()
+    print(f"Scanning {subnet}.1 to {subnet}.254 for Dirigera Hub (port 8443)...")
     found = []
     with concurrent.futures.ThreadPoolExecutor(max_workers=50) as executor:
-        futures = [executor.submit(check_ip, f"{SUBNET}.{i}") for i in range(1, 255)]
+        futures = [executor.submit(check_ip, f"{subnet}.{i}") for i in range(1, 255)]
         for future in concurrent.futures.as_completed(futures):
             ip = future.result()
             if ip:
-                print(f"Potential Hub Found: {ip}")
+                print(f"Potential hub found: {ip}")
                 found.append(ip)
-    
+
     if not found:
-        print("No devices found on port 8443. Try checking your Router or App.")
+        print("No devices found on port 8443. Check your router or the IKEA Home app.")
     else:
         print("Try using one of the IPs above!")
+    return found
+
 
 if __name__ == "__main__":
-    scan()
+    subnet_arg = sys.argv[1] if len(sys.argv) > 1 else None
+    scan(subnet_arg)

@@ -7,5 +7,10 @@ requires-python = ">=3.12"
 dependencies = [
     "dirigera",
     "flask",
+]
+
+[project.optional-dependencies]
+dev = [
     "pytest",
+    "pytest-cov",
 ]
