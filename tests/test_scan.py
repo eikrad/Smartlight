@@ -47,9 +47,18 @@ class TestScan:
         assert mock_check_ip.call_count == 254
 
     @patch("scan.check_ip")
-    def test_scan_uses_subnet(self, mock_check_ip):
+    def test_scan_uses_provided_subnet(self, mock_check_ip):
+        mock_check_ip.return_value = None
+        scan.scan("10.0.0")
+        ips_called = [c[0][0] for c in mock_check_ip.call_args_list]
+        assert "10.0.0.1" in ips_called
+        assert "10.0.0.254" in ips_called
+
+    @patch("scan.check_ip")
+    @patch("scan._local_subnet", return_value="192.168.99")
+    def test_scan_falls_back_to_local_subnet(self, mock_subnet, mock_check_ip):
         mock_check_ip.return_value = None
         scan.scan()
         ips_called = [c[0][0] for c in mock_check_ip.call_args_list]
-        assert "172.17.112.1" in ips_called
-        assert "172.17.112.254" in ips_called
+        assert "192.168.99.1" in ips_called
+        assert "192.168.99.254" in ips_called
