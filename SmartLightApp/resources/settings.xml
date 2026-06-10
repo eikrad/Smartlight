@@ -2,7 +2,7 @@
     <properties>
         <property id="bridge_ip" type="string">127.0.0.1</property>
         <property id="bridge_port" type="number">8080</property>
-        <property id="use_https" type="boolean">true</property>
+        <property id="use_https" type="boolean">false</property>
     </properties>
 
     <settings>

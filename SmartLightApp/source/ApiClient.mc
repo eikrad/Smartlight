@@ -18,7 +18,7 @@ class ApiClient {
         
         if (ip == null) { ip = "127.0.0.1"; }
         if (port == null) { port = 8080; }
-        if (useHttps == null) { useHttps = true; }
+        if (useHttps == null) { useHttps = false; }
         
         var protocol = useHttps ? "https://" : "http://";
         return protocol + ip + ":" + port;

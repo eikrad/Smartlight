@@ -262,12 +262,11 @@ if __name__ == '__main__':
         setup_hub()
     else:
         if initialize_hub():
-            print("Starting Bridge Server on port 8080...")
+            print("Starting Bridge Server on http://0.0.0.0:8080")
             print("Endpoints:")
             print("  GET  /rooms")
             print("  POST /rooms/<id>/toggle")
             print("  POST /rooms/<id>/brightness (json: {level: 0-100})")
-            print("\nUsing HTTPS (SSL)...")
-            app.run(host='0.0.0.0', port=8080, threaded=True, ssl_context=('cert.pem', 'key.pem'))
+            app.run(host='0.0.0.0', port=8080, threaded=True)
         else:
             print("Please run 'python bridge.py setup' first!")

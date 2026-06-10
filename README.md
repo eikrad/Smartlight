@@ -65,13 +65,11 @@ This will ask for the hub IP, complete the OAuth-style flow, and write `HUB_IP` 
 
 ### 3. Run the bridge
 
-Start the HTTPS server (uses `cert.pem` and `key.pem` in the project directory):
-
 ```bash
 python bridge.py
 ```
 
-The server listens on **port 8080** (HTTPS). Endpoints:
+The server listens on **port 8080** (HTTP). Endpoints:
 
 - `GET /rooms` – List rooms with state (on/off, brightness, capabilities, etc.)
 - `POST /rooms/<room_id>/toggle` – Toggle the room on or off
@@ -82,7 +80,7 @@ The server listens on **port 8080** (HTTPS). Endpoints:
 ### 4. Garmin watch app (optional)
 
 1. Install the [Connect IQ SDK](https://developer.garmin.com/connect-iq/sdk/) and build/load the app from `SmartLightApp/` for your device.
-2. In the app settings on the watch (or in the SDK simulator), set **bridge IP**, **port** (e.g. 8080), and whether to use **HTTPS** so the watch can reach your bridge on the same network.
+2. In the app settings on the watch (or in the SDK simulator), set **bridge IP** and **port** (default: 8080). HTTP is used by default — no certificate setup needed.
 
 Then you can open the app on the watch to see rooms, toggle lights, and adjust brightness/color/temperature.
 
